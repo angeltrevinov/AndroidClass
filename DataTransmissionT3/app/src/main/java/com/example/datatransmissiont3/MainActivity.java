@@ -15,9 +15,11 @@ import android.widget.TextView;
 // =========================================================
 public class MainActivity extends AppCompatActivity {
 
+    // to store our instance
     public static final String CURRRENT_COUNTER =
             "com.example.twoact.extra.CURRENT_COUNTER";
 
+    // A handler for the count down
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
         @Override
@@ -46,21 +48,34 @@ public class MainActivity extends AppCompatActivity {
         tvCounter.setText("" + intCount);
     }
     // -----------------------------------------------------
-    public void onClickCount(View view) {
+    public void onClickCount(
+            // Starts the counter
+            View view
+    ) {
 
         btnCount.setEnabled(false);
         handler.postDelayed(runnable, 1000);
     }
     // -----------------------------------------------------
-    public void LaunchActivityB(View view) {
+    public void LaunchActivityB(
+            // Change to the activity B
+            View view
+    ) {
+        // save our data to send it to activity B
         Intent intent = new Intent(MainActivity.this, ActivityB.class);
         intent.putExtra(CURRRENT_COUNTER, intCount);
+        // For when we want to receive data from the activity b
         startActivityForResult(intent, 1);
     }
 
     // -----------------------------------------------------
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(
+            // When returning from activity B, get the data
+            int requestCode,
+            int resultCode,
+            @Nullable Intent data
+    ) {
         super.onActivityResult(requestCode, resultCode, data);
         intCount = data.getIntExtra(ActivityB.NEW_COUNTER, 0);
         tvCounter.setText("" + intCount);

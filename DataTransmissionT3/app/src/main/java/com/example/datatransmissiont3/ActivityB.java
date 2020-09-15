@@ -28,7 +28,7 @@ public class ActivityB extends AppCompatActivity {
         tvCount = findViewById(R.id.tvCount);
         etCounter = findViewById(R.id.etCounter);
 
-        // get intent
+        // get intent from activity A
         Intent intent = getIntent();
         intCounter = intent.getIntExtra(MainActivity.CURRRENT_COUNTER, 0);
         tvCount.setText("" + intCounter);
@@ -40,6 +40,7 @@ public class ActivityB extends AppCompatActivity {
         if (!strNewCount.equals("")) {
             intCounter = Integer.parseInt(strNewCount);
         }
+        // To send data back
         Intent BackIntent = new Intent();
         BackIntent.putExtra(NEW_COUNTER, intCounter);
         setResult(RESULT_OK, BackIntent);

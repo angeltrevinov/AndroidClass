@@ -15,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
     int indexQuestions = 0;
     // HELPERS
     // -----------------------------------------------------
-    void createQuestions() {
+    void createQuestions(
+            // Method to help us create our questions at the beginning
+    ) {
         questions[0] = new Question("Messi is leaving Barcelona", true);
         questions[1] = new Question("Porcupines can float", true);
         questions[2] = new Question("Goldfish only have a memory of three seconds", false);
@@ -23,12 +25,18 @@ public class MainActivity extends AppCompatActivity {
         questions[4] = new Question("According to Scottish law, it is illegal to be drunk in charge of a cow", true);
     }
     // -----------------------------------------------------
-    void showQuestion(int id) {
+    void showQuestion(
+            // A method to display the question we are on
+            int id
+    ) {
         TextView displayQuestion = findViewById(R.id.strQuestionHolder);
         displayQuestion.setText(questions[id].strQuestion);
     }
     // -----------------------------------------------------
-    void showToast(String strMessage){
+    void showToast(
+            // helps us display a toast message
+            String strMessage
+    ){
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, strMessage, Toast.LENGTH_SHORT);
         toast.show();
@@ -45,7 +53,10 @@ public class MainActivity extends AppCompatActivity {
     }
     // -----------------------------------------------------
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
+    protected void onSaveInstanceState(
+            // when we change orientations
+            @NonNull Bundle outState
+    ) {
         super.onSaveInstanceState(outState);
         outState.putInt("index", indexQuestions);
     }
