@@ -28,6 +28,6 @@ public abstract class ProductDatabase extends RoomDatabase {
                 context,
                 ProductDatabase.class,
                 Constants.DB_NAME
-        ).build();
+        ).allowMainThreadQueries().build();
     }
 }
